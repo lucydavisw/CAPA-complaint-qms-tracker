@@ -1,4 +1,4 @@
-# CAPA & Complaint Investigation Tracker (QMS Prototype)
+# CAPA & Complaint Investigation Tracker App (QMS Prototype)
 
 Simulates post-market QMS workflows:
 - Complaints → Non-Conformances (NC) → CAPA/PFA
