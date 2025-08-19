@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Complaint #{{ c.id }} – {{ c.title }}</h3>
+<p><b>Severity:</b> {{ c.severity }} | <b>Status:</b> {{ c.status }} | <b>Category:</b> {{ c.category }}</p>
+<p>{{ c.description }}</p>
+<h5>Linked NCs</h5>
+<ul>
+  {% for nc in c.ncs %}
+    <li>#{{ nc.id }} – {{ nc.process_area }} – {{ nc.status }}</li>
+  {% else %}
+    <li>No linked NCs</li>
+  {% endfor %}
+</ul>
+<h5>Linked CAPAs</h5>
+<ul>
+  {% for ca in c.capas %}
+    <li>#{{ ca.id }} – {{ ca.type }} – {{ ca.status }}</li>
+  {% else %}
+    <li>No linked CAPAs</li>
+  {% endfor %}
+</ul>
+{% endblock %}

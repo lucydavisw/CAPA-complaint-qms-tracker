@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Overview</h3>
+<div class="row g-3">
+  <div class="col-md-4"><div class="card p-3"><b>Open Complaints:</b> {{ open_complaints }}</div></div>
+  <div class="col-md-4"><div class="card p-3"><b>Open NCs:</b> {{ open_nc }}</div></div>
+  <div class="col-md-4"><div class="card p-3"><b>Open CAPAs:</b> {{ open_capa }}</div></div>
+</div>
+{% endblock %}

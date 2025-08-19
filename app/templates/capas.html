@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+  <h3>CAPAs</h3>
+  <a class="btn btn-primary" href="/capas/new">New CAPA</a>
+</div>
+<table class="table table-striped mt-3">
+  <thead><tr><th>ID</th><th>Type</th><th>Status</th><th>Due</th><th>NC</th><th>Complaint</th><th>Action</th></tr></thead>
+  <tbody>
+    {% for c in items %}
+    <tr>
+      <td>{{ c.id }}</td>
+      <td>{{ c.type }}</td>
+      <td>{{ c.status }}</td>
+      <td>{% if c.due_date %}{{ c.due_date.strftime('%Y-%m-%d') }}{% endif %}</td>
+      <td>{{ c.nc_id }}</td>
+      <td>{{ c.complaint_id }}</td>
+      <td>
+        <form method="post" action="/capas/{{ c.id }}/status" class="d-flex gap-2">
+          <select name="status" class="form-select form-select-sm" style="width:auto">
+            {% for s in ["Open","Planned","Implemented","Verified","Closed"] %}
+              <option value="{{ s }}" {% if s==c.status %}selected{% endif %}>{{ s }}</option>
+            {% endfor %}
+          </select>
+          <button class="btn btn-sm btn-outline-primary">Update</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+  <h3>Complaints</h3>
+  <a class="btn btn-primary" href="/complaints/new">New Complaint</a>
+</div>
+<table class="table table-striped mt-3">
+  <thead><tr><th>ID</th><th>Title</th><th>Severity</th><th>Status</th><th>Reported</th><th></th></tr></thead>
+  <tbody>
+    {% for c in items %}
+    <tr>
+      <td>{{ c.id }}</td>
+      <td><a href="/complaints/{{ c.id }}">{{ c.title }}</a></td>
+      <td>{{ c.severity }}</td>
+      <td>{{ c.status }}</td>
+      <td>{{ c.reported_at.strftime('%Y-%m-%d') }}</td>
+      <td><form method="post" action="/complaints/{{ c.id }}/close">
+        <button class="btn btn-sm btn-outline-success" {% if c.status=='Closed' %}disabled{% endif %}>Close</button>
+      </form></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a class="btn btn-outline-secondary" href="/complaints/export.csv">Export CSV</a>
+{% endblock %}

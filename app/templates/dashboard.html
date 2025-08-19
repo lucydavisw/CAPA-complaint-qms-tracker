@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Post-Market KPI Dashboard</h3>
+<div class="row g-3">
+  <div class="col-md-3"><div class="card p-3"><b>Total Complaints:</b> {{ kpis.complaints_total }}</div></div>
+  <div class="col-md-3"><div class="card p-3"><b>Open Complaints:</b> {{ kpis.complaints_open }}</div></div>
+  <div class="col-md-3"><div class="card p-3"><b>Total CAPAs:</b> {{ kpis.capas_total }}</div></div>
+  <div class="col-md-3"><div class="card p-3"><b>Open CAPAs:</b> {{ kpis.capas_open }}</div></div>
+  <div class="col-md-3"><div class="card p-3"><b>Total NCs:</b> {{ kpis.ncs_total }}</div></div>
+  <div class="col-md-3"><div class="card p-3"><b>Open NCs:</b> {{ kpis.ncs_open }}</div></div>
+  <div class="col-md-3"><div class="card p-3"><b>Avg Complaint Close (days):</b> {{ kpis.avg_complaint_close_days }}</div></div>
+  <div class="col-md-3"><div class="card p-3"><b>Avg CAPA Close (days):</b> {{ kpis.avg_capa_close_days }}</div></div>
+  <div class="col-md-3"><div class="card p-3"><b>Overdue CAPAs:</b> {{ kpis.overdue_capa }}</div></div>
+</div>
+
+<h5 class="mt-4">Complaint Count by Severity</h5>
+<ul>
+  {% for sev, cnt in by_severity.items() %}
+    <li>{{ sev }}: {{ cnt }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
